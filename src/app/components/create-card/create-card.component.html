@@ -5,13 +5,15 @@
     <form [formGroup]="form" (ngSubmit)="createCard()">
       <div class="input-group input-group-lg mb-3">
         <span class="input-group-text">
-          <i class="fas fa-user-circle"></i>
+          <i class="fas fa-user-circle"
+            [ngClass]="{ 'text-success': form.controls.owner.valid, 'text-danger': form.controls.owner.invalid && (form.controls.owner.dirty || form.controls.owner.touched) }"></i>
         </span>
         <input type="text" formControlName="owner" class="form-control" placeholder="Owner">
       </div>
       <div class="input-group input-group-lg mb-3">
         <span class="input-group-text">
-          <i class="fas fa-credit-card"></i>
+          <i class="fas fa-credit-card"
+            [ngClass]="{ 'text-success': form.controls.number.valid, 'text-danger': form.controls.number.invalid && (form.controls.number.dirty || form.controls.number.touched) }"></i>
         </span>
         <input type="text" formControlName="number" maxlength="16" class="form-control" placeholder="Card number">
       </div>
@@ -19,7 +21,8 @@
         <div class="col-lg-7">
           <div class="input-group input-group-lg mb-3">
             <span class="input-group-text">
-              <i class="fas fa-calendar-alt"></i>
+              <i class="fas fa-calendar-alt"
+                [ngClass]="{ 'text-success': form.controls.expDate.valid, 'text-danger': form.controls.expDate.invalid && (form.controls.expDate.dirty || form.controls.expDate.touched) }"></i>
             </span>
             <input type="text" formControlName="expDate" maxlength="5" class="form-control" placeholder="MM/YY">
           </div>
@@ -27,14 +30,15 @@
         <div class="col-lg-5">
           <div class="input-group input-group-lg mb-3">
             <span class="input-group-text">
-              <i class="fas fa-key"></i>
+              <i class="fas fa-key"
+                [ngClass]="{ 'text-success': form.controls.cvv.valid, 'text-danger': form.controls.cvv.invalid && (form.controls.cvv.dirty || form.controls.cvv.touched) }"></i>
             </span>
             <input type="password" formControlName="cvv" maxlength="3" class="form-control" placeholder="CVV">
           </div>
         </div>
       </div>
       <div class="d-grid gap-2">
-        <button class="btn btn-success btn-lg" type="submit">
+        <button class="btn btn-success btn-lg" type="submit" [disabled]="form.invalid">
           <i class="fas fa-save mr-5"></i>
           Add
         </button>
