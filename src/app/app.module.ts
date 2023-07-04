@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { CreateCardComponent } from './components/create-card/create-card.component';
 import { ListCardComponent } from './components/list-card/list-card.component';
-
+import { ReactiveFormsModule } from '@angular/forms'
 @NgModule({
   declarations: [
     AppComponent,
@@ -12,7 +12,8 @@ import { ListCardComponent } from './components/list-card/list-card.component';
     ListCardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
