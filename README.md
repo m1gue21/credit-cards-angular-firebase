@@ -1,4 +1,8 @@
 # CreditCardsAngular
+### Demo
+![image](https://github.com/m1gue21/credit-cards-angular/assets/73451596/3566d2d1-f5cc-4d6c-b07f-7f5c5881b4a1)
+A very sample project I made to get a bt familiar with google firebase.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.17.
 
