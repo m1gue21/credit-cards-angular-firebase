@@ -1,6 +1,6 @@
 # CreditCardsAngular
 ### Demo
-![image](https://github.com/m1gue21/credit-cards-angular/assets/73451596/3566d2d1-f5cc-4d6c-b07f-7f5c5881b4a1)
+![image](https://github.com/m1gue21/credit-cards-angular-firebase/assets/73451596/52e3dbfa-3ec1-476d-965f-c2802ab141d1)
 A very sample project I made to get a bt familiar with google firebase.
 
 
