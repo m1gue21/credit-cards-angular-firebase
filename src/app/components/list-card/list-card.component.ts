@@ -20,4 +20,15 @@ export class ListCardComponent implements OnInit {
     })
   }
 
+  async deleteCard(card: CreditCard) {
+    try {
+      const response = await this.cardService.deleteCard(card);
+      console.log(response);
+    } catch (error) {
+      console.error('Error deleting card:', error);
+      // Aquí puedes agregar tu lógica de manejo de errores, como mostrar un mensaje al usuario o tomar alguna acción adicional.
+    }
+  }
+
+
 }

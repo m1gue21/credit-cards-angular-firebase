@@ -14,9 +14,9 @@ export class CreateCardComponent implements OnInit {
   constructor(private fb: FormBuilder, private cardService: CardService) {
     this.form = this.fb.group({
       owner: ['', Validators.required],
-      number: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
-      expDate: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
-      cvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
+      number: ['', [Validators.required, Validators.pattern(/^[0-9]{16}$/)]],
+      expDate: ['', [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/[0-9]{2}$/)]],
+      cvv: ['', [Validators.required, Validators.pattern(/^[0-9]{3}$/)]],
     });
   }
 
@@ -24,18 +24,20 @@ export class CreateCardComponent implements OnInit {
   }
 
   async createCard() {
-    const CARD: CreditCard = {
-      owner: this.form.value.owner,
-      number: this.form.value.number,
-      expDate: this.form.value.expDate,
-      cvv: this.form.value.cvv,
-      creationDate: new Date(),
-      updatedAt: new Date()
+    if (this.form.valid) {
+      const CARD: CreditCard = {
+        owner: this.form.value.owner,
+        number: this.form.value.number,
+        expDate: this.form.value.expDate,
+        cvv: this.form.value.cvv,
+        creationDate: new Date(),
+        updatedAt: new Date()
+      }
+
+      const response = await this.cardService.createCard(CARD);
+
+      console.log(response);
+      this.form.reset();
     }
-
-    const response = await this.cardService.createCard(CARD)
-
-    console.log(response)
-    this.form.reset();
   }
 }

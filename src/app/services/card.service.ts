@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CreditCard } from 'src/app/interfaces/CreditCard';
 
@@ -20,4 +20,10 @@ export class CardService {
     const cardRef = collection(this.firestore, 'CreditCards')
     return collectionData(cardRef, { idField: 'id' }) as Observable<CreditCard[]>
   }
+
+  deleteCard(card: CreditCard) {
+    const cardDocRef = doc(this.firestore, `CreditCards/${card.id}`);
+    return deleteDoc(cardDocRef);
+  }
+
 }
