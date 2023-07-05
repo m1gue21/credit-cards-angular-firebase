@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "creditcards-47b77": {
+      "hosting": {
+        "credit-cards-angular": [
+          "creditcards-47b77"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "creditcards-47b77"
+  }
+}

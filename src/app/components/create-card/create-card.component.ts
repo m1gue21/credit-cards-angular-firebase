@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CreditCard } from 'src/app/models/CreditCard';
+import { CreditCard } from 'src/app/interfaces/CreditCard';
+import { CardService } from '../../services/card.service';
 
 @Component({
   selector: 'app-create-card',
@@ -10,7 +11,7 @@ import { CreditCard } from 'src/app/models/CreditCard';
 export class CreateCardComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private cardService: CardService) {
     this.form = this.fb.group({
       owner: ['', Validators.required],
       number: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
@@ -22,7 +23,7 @@ export class CreateCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createCard() {
+  async createCard() {
     const CARD: CreditCard = {
       owner: this.form.value.owner,
       number: this.form.value.number,
@@ -31,6 +32,10 @@ export class CreateCardComponent implements OnInit {
       creationDate: new Date(),
       updatedAt: new Date()
     }
-    console.log(CARD)
+
+    const response = await this.cardService.createCard(CARD)
+
+    console.log(response)
+    this.form.reset();
   }
 }

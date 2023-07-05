@@ -97,9 +97,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css", "node_modules/bootstrap/dist/bootstrap.min.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/bootstrap.min.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2,
+            "browserTarget": "credit-cards-angular:build:production"
           }
         }
       }
